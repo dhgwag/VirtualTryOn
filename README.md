@@ -100,19 +100,55 @@ Conda Env Activation :
 ```
 conda activate VITON_HD
 ```
+   
+*Preprocessing*
+1. cloth와 cloth-mask 이미지 size 조정 (512x512)
+2. model image를 중점으로 이동시키고 size 조정 (512x512)
+3. 2에서 만든 image로 parse map과(segment) openpose 데이터 추출
+4. 학습할 model과 cloth pair를 **datasets/train_pairs.txt**에 작성
+   
+   
 > ##### Seg Generation
 > > Dataset :   
-> > **datasets/org_img** folder
+> > **datasets/train/cloth** folder에 학습할 cloth copy
+> > **datasets/train/cloth-mask** folder에 학습할 cloth mask copy
+> > **datasets/train/image-parse** folder에 에 parse map(segment) copy
+> > **datasets/train/openpose-img** folder에 에 openpose image copy
+> > **datasets/train/openpose-json** folder에 에 openpose json copy
 >    
 > > run :   
 > > ```
-> > python test.py --step step1
+> > python train.py --train_model seg --name [테스트 이름]
 > > ```
 >  
 > > result :   
-> > **output/background_step1** 에 생성
+> > **checkpoints/[테스트 이름]** 에 생성
    
+> ##### Gmm Generation
+> > Dataset :   
+> > **datasets/train/image** folder에 학습할 model image copy
+>    
+> > run :   
+> > ```
+> > python train.py --train_model gmm --name [테스트 이름]
+> > ```
+>  
+> > result :   
+> > **checkpoints/[테스트 이름]** 에 생성
+
    
+> ##### Alias Generation
+> > Dataset :   
+> > GMM 학습 결과로 만들어낸 warped cloth를 **datasets/train/warped_cloth** folder에 copy
+> > GMM 학습 결과로 만들어낸 warped cloth-mask를 **datasets/train/warped_cloth-mask** folder에 copy
+>    
+> > run :   
+> > ```
+> > python train.py --train_model alias --name [테스트 이름]
+> > ```
+>  
+> > result :   
+> > **checkpoints/[테스트 이름]** 에 생성
    
 ***
 ## Q&A
