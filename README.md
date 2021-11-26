@@ -48,9 +48,9 @@
 > > Dataset :   
 > > step2 **output_img** output을 **datasets/image** folder로 copy
 > > **datasets/labels**와 **datasets/edges** 에 **512x512.png** 필요   
-> > **datasets/val.txt** 에 generation할 image 와 label 경로 입력 (label은 고정값을 넣어주면 됨)
-> > **datasets/val_id.txt** 에 input edge 경로 입력 (고정값을 넣어주면 됨, 다만 image 개수와 일치 필요)
-> > **datasets/palette_ref.png** 필요 (palette 참고용)
+> > **datasets/val.txt** 에 generation할 image 와 label 경로 입력 (label은 고정값을 넣어주면 됨)   
+> > **datasets/val_id.txt** 에 input edge 경로 입력 (고정값을 넣어주면 됨, 다만 image 개수와 일치 필요)   
+> > **datasets/palette_ref.png** 필요 (palette 참고용)   
 >    
 > > run :   
 > > ```
@@ -107,6 +107,8 @@ conda activate VITON_HD
 3. 2에서 만든 image로 parse map과(segment) openpose 데이터 추출   
 4. 학습할 model과 cloth pair를 **datasets/train_pairs.txt**에 작성   
    
+
+*학습을 이어서 할 때는 --continue_train 옵션 사용*
    
 > ##### Seg Generation
 > > Dataset :   
@@ -118,7 +120,7 @@ conda activate VITON_HD
 >    
 > > run :   
 > > ```
-> > python train.py --train_model seg --name [테스트 이름]
+> > python train.py --train_model seg --name [트레이닝 이름]
 > > ```
 >  
 > > result :   
@@ -130,7 +132,7 @@ conda activate VITON_HD
 >    
 > > run :   
 > > ```
-> > python train.py --train_model gmm --name [테스트 이름]
+> > python train.py --train_model gmm --name [트레이닝 이름]
 > > ```
 >  
 > > result :   
@@ -144,7 +146,7 @@ conda activate VITON_HD
 >    
 > > run :   
 > > ```
-> > python train.py --train_model alias --name [테스트 이름]
+> > python train.py --train_model alias --name [트레이닝 이름]
 > > ```
 >  
 > > result :   
