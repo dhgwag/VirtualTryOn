@@ -179,6 +179,7 @@ conda activate VITON_HD
      - 기존 gmm과 달리, model의 자세에 더 맞게끔 warping시킬 수 있다면 훨씬 좋은 성능이 나올것으로 기대함
    
 ***
+   
 ## Contact
 곽동훈   
 Tel : 010-7449-0360   
